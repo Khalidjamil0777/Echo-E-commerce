@@ -34,8 +34,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const authModal = document.getElementById('authModal');
     const cartModal = document.getElementById('cartModal');
+    const rewardsModal = document.getElementById('rewardsModal');
     const loginBtn = document.getElementById('loginBtn');
     const cartBtn = document.getElementById('cartBtn');
+    const rewardsBtn = document.getElementById('rewardsBtn');
     const cartCountElement = document.getElementById('cartCount');
 
     // Toast notification system
@@ -69,6 +71,16 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
+    function deductLoyaltyPoints(points) {
+        if (currentUser && currentUser.loyaltyPoints >= points) {
+            currentUser.loyaltyPoints -= points;
+            saveUser();
+            updateLoyaltyDisplay();
+            return true;
+        }
+        return false;
+    }
+
     function updateLoyaltyDisplay() {
         if (currentUser && currentUser.loyaltyPoints) {
             const points = currentUser.loyaltyPoints;
@@ -91,6 +103,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function saveUser() {
         storage.set('currentUser', currentUser);
+        if (currentUser) {
+            storage.set('user_' + currentUser.email, currentUser);
+        }
     }
 
     function validateEmail(email) {
@@ -123,6 +138,20 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
+    // Rewards Store Button Handler
+    if (rewardsBtn) {
+        rewardsBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            if (!currentUser) {
+                showToast('Please login to access Rewards Store', 'error');
+                authModal.classList.add('active');
+                document.body.style.overflow = 'hidden';
+                return;
+            }
+            openRewardsStore();
+        });
+    }
+
     // Close modal handlers
     document.getElementById('closeAuthModal').addEventListener('click', () => {
         authModal.classList.remove('active');
@@ -131,6 +160,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
     document.getElementById('closeCartModal').addEventListener('click', () => {
         cartModal.classList.remove('active');
+        document.body.style.overflow = '';
+    });
+
+    document.getElementById('closeRewardsModal').addEventListener('click', () => {
+        rewardsModal.classList.remove('active');
         document.body.style.overflow = '';
     });
 
@@ -206,7 +240,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
         currentUser = { name, email, loyaltyPoints: 0 };
         saveUser();
-        storage.set('user_' + email, currentUser); // Store user by email
         updateLoyaltyDisplay();
         loginBtn.classList.add('logged-in');
         authModal.classList.remove('active');
@@ -366,6 +399,91 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
 
+    // Rewards Store Functionality
+    const rewardItems = [
+        { id: 1, name: '₹50 Discount Voucher', points: 100, type: 'voucher', value: 50, icon: 'fa-ticket-alt' },
+        { id: 2, name: '₹100 Discount Voucher', points: 200, type: 'voucher', value: 100, icon: 'fa-ticket-alt' },
+        { id: 3, name: '₹250 Discount Voucher', points: 500, type: 'voucher', value: 250, icon: 'fa-ticket-alt' },
+        { id: 4, name: '₹500 Discount Voucher', points: 1000, type: 'voucher', value: 500, icon: 'fa-ticket-alt' },
+        { id: 5, name: 'Free Shipping (1 Month)', points: 150, type: 'benefit', icon: 'fa-shipping-fast' },
+        { id: 6, name: 'Early Access to Sales', points: 300, type: 'benefit', icon: 'fa-clock' },
+        { id: 7, name: 'Echo Premium Membership', points: 2000, type: 'membership', icon: 'fa-crown' },
+        { id: 8, name: 'Mystery Gift Box', points: 800, type: 'gift', icon: 'fa-gift' },
+    ];
+
+    function openRewardsStore() {
+        rewardsModal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+        displayRewardsStore();
+    }
+
+    function displayRewardsStore() {
+        const rewardsGrid = document.getElementById('rewardsGrid');
+        const userPointsDisplay = document.getElementById('userPoints');
+        
+        const userPoints = currentUser ? currentUser.loyaltyPoints || 0 : 0;
+        userPointsDisplay.innerHTML = `<i class="fas fa-star"></i> Your Points: <strong>${userPoints}</strong>`;
+
+        rewardsGrid.innerHTML = '';
+
+        rewardItems.forEach(item => {
+            const canRedeem = userPoints >= item.points;
+            const rewardCard = document.createElement('div');
+            rewardCard.className = `reward-card ${!canRedeem ? 'disabled' : ''}`;
+            rewardCard.innerHTML = `
+                <div class="reward-icon">
+                    <i class="fas ${item.icon}"></i>
+                </div>
+                <h4 class="reward-name">${item.name}</h4>
+                <p class="reward-points">
+                    <i class="fas fa-star"></i> ${item.points} Points
+                </p>
+                <button class="btn btn-primary btn-redeem ${!canRedeem ? 'disabled' : ''}" 
+                        data-id="${item.id}" 
+                        ${!canRedeem ? 'disabled' : ''}>
+                    ${canRedeem ? 'Redeem Now' : 'Not Enough Points'}
+                </button>
+            `;
+            rewardsGrid.appendChild(rewardCard);
+        });
+
+        // Add event listeners to redeem buttons
+        document.querySelectorAll('.btn-redeem:not(.disabled)').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const itemId = parseInt(this.dataset.id);
+                redeemReward(itemId);
+            });
+        });
+    }
+
+    function redeemReward(itemId) {
+        const reward = rewardItems.find(r => r.id === itemId);
+        if (!reward) return;
+
+        if (currentUser.loyaltyPoints < reward.points) {
+            showToast('Not enough points!', 'error');
+            return;
+        }
+
+        if (confirm(`Redeem ${reward.name} for ${reward.points} points?`)) {
+            if (deductLoyaltyPoints(reward.points)) {
+                // Save redeemed reward
+                const redeemedRewards = storage.get('redeemedRewards') || [];
+                redeemedRewards.push({
+                    ...reward,
+                    redeemedAt: new Date().toISOString(),
+                    userId: currentUser.email
+                });
+                storage.set('redeemedRewards', redeemedRewards);
+
+                showToast(`🎉 ${reward.name} redeemed successfully!`, 'success');
+                displayRewardsStore(); // Refresh the store
+            } else {
+                showToast('Redemption failed. Please try again.', 'error');
+            }
+        }
+    }
+
     // Newsletter form
     document.querySelector('.newsletter-form').onsubmit = (e) => {
         e.preventDefault();
@@ -391,6 +509,13 @@ document.addEventListener('DOMContentLoaded', () => {
     cartModal.addEventListener('click', (e) => {
         if (e.target === cartModal) {
             cartModal.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+    });
+
+    rewardsModal.addEventListener('click', (e) => {
+        if (e.target === rewardsModal) {
+            rewardsModal.classList.remove('active');
             document.body.style.overflow = '';
         }
     });
