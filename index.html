@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Echo - Premium Tech Gadgets</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#home"><span class="brand-name">Echo</span></a>
+            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto align-items-center">
+                    <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#products">Products</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#features">Features</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+                    <li class="nav-item">
+                        <a class="nav-link cart-icon" href="#" id="cartBtn">
+                            <i class="fas fa-shopping-cart"></i>
+                            <span class="cart-count" id="cartCount">0</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" id="loginBtn"><i class="fas fa-user"></i> Login</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <section id="home" class="hero-section">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <h1 class="hero-title">Experience Sound Like Never Before</h1>
+                    <p class="hero-subtitle">Premium wireless earbuds with crystal-clear audio and all-day battery life.
+                    </p>
+                    <div class="hero-buttons">
+                        <a href="#products" class="btn btn-primary btn-lg">Shop Now</a>
+                        <a href="#features" class="btn btn-outline-dark btn-lg ms-3">Learn More</a>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <img src="https://images.unsplash.com/photo-1590658268037-6bf12165a8df?w=800" alt="Premium Earbuds"
+                        class="img-fluid hero-image">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="products" class="products-section">
+        <div class="container">
+            <div class="section-header text-center">
+                <h2 class="section-title">Our Products</h2>
+                <p class="section-subtitle">Discover premium tech gadgets designed for your lifestyle</p>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-6 col-lg-4">
+                    <div class="product-card">
+                        <div class="product-image">
+                            <img src="https://images.unsplash.com/photo-1590658268037-6bf12165a8df?w=500"
+                                alt="Echo Buds Pro">
+                            <div class="product-overlay">
+                                <button class="btn btn-light add-to-cart" data-name="Echo Buds Pro"
+                                    data-price="4999">Add to Cart</button>
+                            </div>
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-name">Echo Buds Pro</h3>
+                            <p class="product-description">Premium wireless earbuds with active noise cancellation</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <p class="product-price mb-0">₹4,999</p>
+                                <span class="loyalty-points-badge">+49 pts</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-4">
+                    <div class="product-card">
+                        <div class="product-image">
+                            <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=500"
+                                alt="Echo Watch">
+                            <div class="product-overlay">
+                                <button class="btn btn-light add-to-cart" data-name="Echo Watch" data-price="12999">Add
+                                    to Cart</button>
+                            </div>
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-name">Echo Watch</h3>
+                            <p class="product-description">Smart fitness tracker with heart rate monitoring</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <p class="product-price mb-0">₹12,999</p>
+                                <span class="loyalty-points-badge">+129 pts</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-4">
+                    <div class="product-card">
+                        <div class="product-image">
+                            <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=500"
+                                alt="Echo Headphones">
+                            <div class="product-overlay">
+                                <button class="btn btn-light add-to-cart" data-name="Echo Headphones"
+                                    data-price="7999">Add to Cart</button>
+                            </div>
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-name">Echo Headphones</h3>
+                            <p class="product-description">Over-ear headphones with immersive sound quality</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <p class="product-price mb-0">₹7,999</p>
+                                <span class="loyalty-points-badge">+79 pts</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-4">
+                    <div class="product-card">
+                        <div class="product-image">
+                            <img src="https://images.unsplash.com/photo-1623126908029-58cb08a2b272?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                                alt="Echo Tablet">
+                            <div class="product-overlay">
+                                <button class="btn btn-light add-to-cart" data-name="Echo Tablet" data-price="24999">Add
+                                    to Cart</button>
+                            </div>
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-name">Echo Tablet</h3>
+                            <p class="product-description">10.5-inch HD tablet with stylus support and long battery life
+                            </p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <p class="product-price mb-0">₹24,999</p>
+                                <span class="loyalty-points-badge">+249 pts</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-4">
+                    <div class="product-card">
+                        <div class="product-image">
+                            <img src="https://images.unsplash.com/photo-1551475957-4bf213ef272d?q=80&w=736&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                                alt="Echo Drone">
+                            <div class="product-overlay">
+                                <button class="btn btn-light add-to-cart" data-name="Echo Drone" data-price="45999">Add
+                                    to Cart</button>
+                            </div>
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-name">Echo Drone</h3>
+                            <p class="product-description">AI-powered 4K camera drone with obstacle avoidance</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <p class="product-price mb-0">₹45,999</p>
+                                <span class="loyalty-points-badge">+459 pts</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-4">
+                    <div class="product-card">
+                        <div class="product-image">
+                            <img src="https://images.unsplash.com/photo-1711006155490-ec01a0ecf0de?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8U21hcnQlMjBMaWdodHxlbnwwfHwwfHx8MA%3D%3D"
+                                alt="Echo Smart Light">
+                            <div class="product-overlay">
+                                <button class="btn btn-light add-to-cart" data-name="Echo Smart Light"
+                                    data-price="2999">Add to Cart</button>
+                            </div>
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-name">Echo Smart Light</h3>
+                            <p class="product-description">Smart LED bulb with color control via mobile app</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <p class="product-price mb-0">₹2,999</p>
+                                <span class="loyalty-points-badge">+29 pts</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-4">
+                    <div class="product-card">
+                        <div class="product-image">
+                            <img src="https://images.unsplash.com/photo-1618384887929-16ec33fab9ef?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8a2V5Ym9hcmR8ZW58MHx8MHx8fDA%3D"
+                                alt="Echo Keyboard">
+                            <div class="product-overlay">
+                                <button class="btn btn-light add-to-cart" data-name="Echo Keyboard"
+                                    data-price="4999">Add to Cart</button>
+                            </div>
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-name">Echo Keyboard</h3>
+                            <p class="product-description">Mechanical RGB keyboard with wireless Bluetooth support</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <p class="product-price mb-0">₹4,999</p>
+                                <span class="loyalty-points-badge">+49 pts</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-4">
+                    <div class="product-card">
+                        <div class="product-image">
+                            <img src="https://images.unsplash.com/photo-1575387873801-3ffec9e2839d?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NTB8fE1vbml0b3J8ZW58MHx8MHx8fDA%3D"
+                                alt="Echo Monitor">
+                            <div class="product-overlay">
+                                <button class="btn btn-light add-to-cart" data-name="Echo Monitor"
+                                    data-price="18999">Add to Cart</button>
+                            </div>
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-name">Echo Monitor</h3>
+                            <p class="product-description">27-inch 2K ultra-slim display with 144Hz refresh rate</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <p class="product-price mb-0">₹18,999</p>
+                                <span class="loyalty-points-badge">+189 pts</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-4">
+                    <div class="product-card">
+                        <div class="product-image">
+                            <img src="https://images.unsplash.com/photo-1607853202273-797f1c22a38e?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8R2FtaW5nJTIwQ29uc29sZXxlbnwwfHwwfHx8MA%3D%3D"
+                                alt="Echo Gaming Console">
+                            <div class="product-overlay">
+                                <button class="btn btn-light add-to-cart" data-name="Echo Gaming Console"
+                                    data-price="69999">Add to Cart</button>
+                            </div>
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-name">Echo Gaming Console</h3>
+                            <p class="product-description">Next-gen 4K gaming console with ultra-fast performance</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <p class="product-price mb-0">₹69,999</p>
+                                <span class="loyalty-points-badge">+699 pts</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="features" class="features-section">
+        <div class="container">
+            <div class="section-header text-center">
+                <h2 class="section-title">Why Choose Echo</h2>
+                <p class="section-subtitle">Premium quality meets innovative technology</p>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-6 col-lg-3">
+                    <div class="feature-box text-center">
+                        <div class="feature-icon"><i class="fas fa-shipping-fast"></i></div>
+                        <h4>Free Shipping</h4>
+                        <p>Free delivery on orders above ₹2,000</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="feature-box text-center">
+                        <div class="feature-icon"><i class="fas fa-shield-alt"></i></div>
+                        <h4>2 Year Warranty</h4>
+                        <p>Comprehensive warranty on all products</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="feature-box text-center">
+                        <div class="feature-icon"><i class="fas fa-headset"></i></div>
+                        <h4>24/7 Support</h4>
+                        <p>Always here to help you anytime</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="feature-box text-center">
+                        <div class="feature-icon"><i class="fas fa-star"></i></div>
+                        <h4>Loyalty Rewards</h4>
+                        <p>Earn 1 point for every ₹100 spent</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="newsletter-section">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-6 text-center">
+                    <h2 class="newsletter-title">Stay Updated</h2>
+                    <p class="newsletter-subtitle">Subscribe to get special offers and updates</p>
+                    <form class="newsletter-form">
+                        <div class="input-group">
+                            <input type="email" class="form-control" placeholder="Enter your email" required>
+                            <button class="btn btn-primary" type="submit">Subscribe</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <h5 class="footer-title">Echo</h5>
+                    <p class="footer-text">Premium tech gadgets for the modern lifestyle—innovative devices that enhance
+                        your productivity, elevate entertainment, and keep you connected in style.</p>
+                </div>
+                <div class="col-md-4">
+                    <h5 class="footer-title">Quick Links</h5>
+                    <ul class="footer-links">
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#products">Products</a></li>
+                        <li><a href="#features">Features</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <h5 class="footer-title">Follow Us</h5>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+            </div>
+            <hr class="footer-divider">
+            <p class="text-center footer-copyright">&copy; 2025 Echo. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <div class="modal-overlay" id="authModal">
+        <div class="modal-container">
+            <button class="modal-close" id="closeAuthModal">&times;</button>
+            <div class="auth-form" id="loginForm">
+                <h2 class="auth-title">Welcome Back</h2>
+                <form id="loginFormSubmit">
+                    <div class="mb-3"><input type="email" class="form-control" placeholder="Email" required></div>
+                    <div class="mb-3"><input type="password" class="form-control" placeholder="Password" required></div>
+                    <button type="submit" class="btn btn-primary w-100">Login</button>
+                </form>
+                <p class="auth-switch">Don't have an account? <a href="#" id="showSignup">Sign Up</a></p>
+            </div>
+            <div class="auth-form" id="signupForm" style="display:none">
+                <h2 class="auth-title">Create Account</h2>
+                <form id="signupFormSubmit">
+                    <div class="mb-3"><input type="text" class="form-control" placeholder="Full Name" required></div>
+                    <div class="mb-3"><input type="email" class="form-control" placeholder="Email" required></div>
+                    <div class="mb-3"><input type="password" class="form-control"
+                            placeholder="Password (min 6 characters)" required></div>
+                    <button type="submit" class="btn btn-primary w-100">Sign Up</button>
+                </form>
+                <p class="auth-switch">Already have an account? <a href="#" id="showLogin">Login</a></p>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal-overlay" id="cartModal">
+        <div class="cart-modal-container">
+            <div class="cart-header">
+                <h2 class="cart-title">Shopping Cart</h2>
+                <button class="modal-close" id="closeCartModal">&times;</button>
+            </div>
+            <div class="cart-body">
+                <div class="empty-cart" id="emptyCart">
+                    <i class="fas fa-shopping-cart empty-cart-icon"></i>
+                    <h3>Your cart is empty</h3>
+                    <p>Add some products to get started!</p>
+                </div>
+                <div class="cart-items" id="cartItems"></div>
+            </div>
+            <div class="cart-footer" id="cartFooter">
+                <div class="cart-summary">
+                    <div class="summary-row"><span>Subtotal:</span><span id="subtotal">₹0</span></div>
+                    <div class="summary-row"><span>Shipping:</span><span id="shipping">₹0</span></div>
+                    <div class="summary-row loyalty-row" id="loyaltyInfo">
+                        <i class="fas fa-star"></i> You'll earn 0 loyalty points
+                    </div>
+                    <div class="summary-row total"><span>Total:</span><span id="total">₹0</span></div>
+                </div>
+                <button class="btn btn-primary btn-checkout" id="checkoutBtn">Proceed to Checkout <i
+                        class="fas fa-arrow-right"></i></button>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="script.js" defer></script>
+</body>
+
+</html>
